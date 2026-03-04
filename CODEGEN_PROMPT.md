@@ -4,12 +4,6 @@ Build a simple LLM web search agent using the UV package manager. The goal is to
 
 ---
 
-## Repo
-
-The GitHub repository is at https://github.com/atiradonet/sample-uv-app and has already been cloned to this workstation. All work should be committed and submitted as a pull request against the `main` branch — do not push directly to `main`.
-
----
-
 ## Project Setup
 
 Use `uv init` to scaffold the project, then `uv add` to install dependencies one by one so the lockfile and `pyproject.toml` evolution is visible.
