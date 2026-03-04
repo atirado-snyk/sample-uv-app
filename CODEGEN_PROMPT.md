@@ -18,14 +18,16 @@ Use `uv init` to scaffold the project, then `uv add` to install dependencies one
 
 ## Dependencies
 
-| Package         | Role                                |
-| --------------- | ----------------------------------- |
-| `anthropic`     | LLM client with tool use            |
-| `typer`         | CLI interface                       |
-| `rich`          | Terminal output formatting          |
-| `httpx`         | HTTP client for search requests     |
-| `python-dotenv` | `.env` file management for API keys |
-| `pydantic`      | Tool input/output schema validation |
+| Package          | Role                                |
+| ---------------- | ----------------------------------- |
+| `anthropic`      | LLM client with tool use            |
+| `typer`          | CLI interface                       |
+| `rich`           | Terminal output formatting          |
+| `httpx`          | HTTP client for search requests     |
+| `python-dotenv`  | `.env` file management for API keys |
+| `pydantic`       | Tool input/output schema validation |
+| `pytest`         | Test runner (dev dependency)        |
+| `pytest-httpx`   | Mock HTTP calls in tests (dev)      |
 
 ---
 
@@ -40,9 +42,21 @@ Use `rich` for formatted terminal output that visually distinguishes reasoning s
 ## UV Specifics to Demonstrate
 
 - `uv init` — project scaffolding
-- `uv add` — dependency installation
-- `uv run` — execute the app without manual venv activation
+- `uv add` — dependency installation (production and dev groups)
+- `uv run` — execute the app and tests without manual venv activation
 - Show the resulting `pyproject.toml` and `uv.lock` structure in comments or the README
+
+---
+
+## Test Harness
+
+Include a `tests/` directory with a `pytest` suite that covers:
+
+- Pydantic model validation (field defaults and bounds checking)
+- `web_search` function with mocked HTTP responses via `pytest-httpx`
+- CLI behaviour: missing API key error path, single-turn answer, model flag pass-through, full ReAct cycle (tool call → end turn)
+
+Add `pytest` and `pytest-httpx` as `uv add --dev` dependencies and configure `[tool.pytest.ini_options]` in `pyproject.toml`. Tests should be runnable with `uv run pytest`.
 
 ---
 
