@@ -59,8 +59,4 @@ Add `pytest` and `pytest-httpx` as `uv add --dev` dependencies and configure `[t
 - `.env.example` — template for required environment variables
 - `README.md` — UV-specific setup and run instructions
 
----
 
-## Deliverable
-
-Create a feature branch, commit all work, and open a pull request against `main` on https://github.com/atiradonet/sample-uv-app with a clear PR description summarising the structure and how to run the app.
